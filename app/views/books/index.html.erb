@@ -1,0 +1,72 @@
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h2>Books</h2>
+
+<div class="clearfix">
+
+	<div class="title-box clearfix">
+		<h5 class="title-headline">Title</h5>
+		<% @books.each do |book| %>
+		<div class="title"><%= book.title %></div>
+		<% end %>
+	</div>
+
+	<div class="title-box clearfix">
+		<h5 class="title-headline">Body</h5>
+		<% @books.each do |book| %>
+		<div class="title"><%= book.body %></div>
+		<% end %>
+	</div>
+
+	<div class="box clearfix">
+		<h5 class="title-headline">&emsp;</h5>
+		<% @books.each do |book| %>
+		<div class="title"><%= link_to "show", "/books/#{book.id}" %>
+		</div>
+		<% end %>
+	</div>
+
+	<div class="box clearfix">
+		<h5 class="title-headline">&emsp;</h5>
+		<% @books.each do |book| %>
+		<div class="title"><%= link_to "edit", "/books/#{book.id}/edit" %>
+		</div>
+		<% end %>
+	</div>
+
+	<div class="box clearfix">
+		<h5 class="title-headline">&emsp;</h5>
+		<% @books.each do |book| %>
+		<div class="title"><%= link_to "destroy", "/books/#{book.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+		</div>
+		<% end %>
+	</div>
+
+</div>
+
+<div class="clearfix">
+    <h3>New book</h3>
+        <% if @book.errors.any? %>
+            <ul>
+            	<% @book.errors.full_messages.each do |message| %>
+            	  <li><%= message %></li>
+            	<% end %>
+            </ul>
+        <% end %>
+    <%= form_for(@book) do |f| %>
+
+        <h6>Title</h6>
+        <%= f.text_field :title %>
+
+        <h6>Body</h6>
+        <%= f.text_area :body %>
+
+        <div class="create-book">
+        <%= f.submit 'Create book' %>
+        </div>
+
+    <% end %>
+</div>

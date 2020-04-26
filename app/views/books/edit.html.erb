@@ -1,0 +1,32 @@
+<div class="clearfix">
+    <h3>Editing book</h3>
+    <%= form_for(@book) do |f| %>
+
+        <h6>Title</h6>
+        <%= f.text_field :title %>
+
+        <h6>Body</h6>
+        <%= f.text_area :body %>
+
+        <div class="create-book">
+        <%= f.submit 'Update book' %>
+        </div>
+
+    <% end %>
+
+        <% if @book.errors.any? %>
+            <ul>
+                <% @book.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+
+    <%= link_to "show","/books/#{@book.id}/" %>
+
+    |
+
+    <a href="/books/">Back</a>
+
+
+</div>
