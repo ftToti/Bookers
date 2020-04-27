@@ -25,24 +25,41 @@
 	clear: both;
 }
 
-.title-box {
-	float: left;
-	width: 20%;
+.frame {
+	padding:3% 2%;
 }
 
-.box {
-	float: left;
-	padding-left: 5px;
+.top-p {
+	line-height: 6;
+	padding-left: 5%;
 }
 
-.title-headline {
-	text-align: center;
+.books {
+	padding-bottom: 10px;
 }
 
-.title {
-	float: bottom;
+.new-book {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.book-title-form {
+	padding-bottom: 10px;
+}
+
+.book-body-form {
+	padding-bottom: 10px;
 }
 
 .create-book {
 	float: bottom;
+}
+
+.show-p {
+	line-height: 3;
+	padding-left: 3%;
+}
+
+.error {
+	list-style: none;
 }

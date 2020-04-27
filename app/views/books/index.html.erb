@@ -1,56 +1,35 @@
 
+<div class="frame">
+
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
-<h2>Books</h2>
+<h2 class="books">Books</h2>
+
+<table width="60%">
+	<tr height="28px">
+		<th width="20%">Title</th>
+		<th width="40%">Body</th>
+		<th width="10%" colspan="3"></th>
+	</tr>
+	<% @books.each do |book| %>
+	<tr height="26px">
+		<td><%= book.title %></td>
+		<td><%= book.body %></td>
+		<td><%= link_to "Show", "/books/#{book.id}" %></td>
+		<td><%= link_to "Edit", "/books/#{book.id}/edit" %></td>
+		<td><%= link_to "Destroy", "/books/#{book.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+	</tr>
+	<% end %>
+</table>
+
 
 <div class="clearfix">
-
-	<div class="title-box clearfix">
-		<h5 class="title-headline">Title</h5>
-		<% @books.each do |book| %>
-		<div class="title"><%= book.title %></div>
-		<% end %>
-	</div>
-
-	<div class="title-box clearfix">
-		<h5 class="title-headline">Body</h5>
-		<% @books.each do |book| %>
-		<div class="title"><%= book.body %></div>
-		<% end %>
-	</div>
-
-	<div class="box clearfix">
-		<h5 class="title-headline">&emsp;</h5>
-		<% @books.each do |book| %>
-		<div class="title"><%= link_to "show", "/books/#{book.id}" %>
-		</div>
-		<% end %>
-	</div>
-
-	<div class="box clearfix">
-		<h5 class="title-headline">&emsp;</h5>
-		<% @books.each do |book| %>
-		<div class="title"><%= link_to "edit", "/books/#{book.id}/edit" %>
-		</div>
-		<% end %>
-	</div>
-
-	<div class="box clearfix">
-		<h5 class="title-headline">&emsp;</h5>
-		<% @books.each do |book| %>
-		<div class="title"><%= link_to "destroy", "/books/#{book.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %>
-		</div>
-		<% end %>
-	</div>
-
-</div>
-
-<div class="clearfix">
-    <h3>New book</h3>
+    <h3 class="new-book">New book</h3>
         <% if @book.errors.any? %>
             <ul>
+                <li class="error">2 errors prohibited this book from being saved:</li>
             	<% @book.errors.full_messages.each do |message| %>
             	  <li><%= message %></li>
             	<% end %>
@@ -59,14 +38,16 @@
     <%= form_for(@book) do |f| %>
 
         <h6>Title</h6>
-        <%= f.text_field :title %>
+        <div class="book-title-form"><%= f.text_field :title %></div>
 
         <h6>Body</h6>
-        <%= f.text_area :body %>
+        <div class="book-body-form"><%= f.text_area :body %></div>
 
         <div class="create-book">
-        <%= f.submit 'Create book' %>
+        <%= f.submit 'Create Book' %>
         </div>
 
     <% end %>
+</div>
+
 </div>

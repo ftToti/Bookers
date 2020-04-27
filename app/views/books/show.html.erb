@@ -1,13 +1,20 @@
+<div class="frame">
 
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
-<p><b>Title:</b><%= @book.title %></p>
-<p><b>Body:</b><%= @book.body %></p>
+<div class="show-p">
 
-<%= link_to "edit","/books/#{@book.id}/edit" %>
+    <p><b>Title:</b><%= @book.title %></p>
+    <p><b>Body:</b><%= @book.body %></p>
+
+</div>
+
+<%= link_to "Edit","/books/#{@book.id}/edit" %>
 
 |
 
-<a href="/books/">Back</a>
+<%= link_to "Back", "/books" %>
+
+</div>
